@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public interface IMovement
+﻿public interface IMovement
 {
-    void SetDirection(Vector2 direction);
+    void SetDirection(float x, float y);
 }
