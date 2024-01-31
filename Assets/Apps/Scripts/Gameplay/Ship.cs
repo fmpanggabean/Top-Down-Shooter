@@ -7,6 +7,7 @@ public class Ship : MonoBehaviour, IMovement
     private Rigidbody2D rb2d;
 
     [SerializeField] private float speed;
+    [SerializeField] private Vector2 direction;
 
     private void Awake()
     {
@@ -15,6 +16,8 @@ public class Ship : MonoBehaviour, IMovement
 
     public void SetDirection(float x, float y)
     {
-        rb2d.velocity.Set(x * speed, y * speed);
+        direction.x = x;
+        direction.y = y;
+        rb2d.velocity = direction * speed;
     }
 }
