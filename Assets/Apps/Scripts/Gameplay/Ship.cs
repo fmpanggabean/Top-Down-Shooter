@@ -2,11 +2,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
-public class Ship : MonoBehaviour, IMovement, IShoot
+public class Ship : MonoBehaviour, IMovement, IShoot, IDamageable
 {
     private Rigidbody2D rb2d;
     private Weapon weapon;
 
+    [SerializeField] private Health health;
     [SerializeField] private float speed;
     [SerializeField] private Vector2 direction;
 
@@ -26,5 +27,15 @@ public class Ship : MonoBehaviour, IMovement, IShoot
     public void Shoot()
     {
         weapon.Shoot();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health.Reduce(damage);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        TakeDamage(1);
     }
 }
