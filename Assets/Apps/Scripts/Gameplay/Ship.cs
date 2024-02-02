@@ -38,4 +38,10 @@ public class Ship : MonoBehaviour, IMovement, IShoot, IDamageable
     {
         TakeDamage(1);
     }
+
+    public Vector2 GetDirection()
+    {
+        Debug.Log(rb2d.velocity.normalized);
+        return rb2d.velocity.normalized;
+    }
 }
